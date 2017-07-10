@@ -14,13 +14,24 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/xiaomi/mido/full_mido.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit from mido device
+$(call inherit-product, device/xiaomi/mido/device.mk)
 
-PRODUCT_NAME := lineage_mido
-BOARD_VENDOR := Xiaomi
+# Inherit some common Nitrogen stuff.
+$(call inherit-product, vendor/nitrogen/products/common.mk)
+
+# Provide meaningful APN configuration
+PRODUCT_COPY_FILES := device/xiaomi/mido/configs/apns-full-conf.xml:system/etc/apns-conf.xml
+
+PRODUCT_DEVICE := mido
+PRODUCT_NAME := nitrogen_mido
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MODEL := Redmi Note 4
+PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
