@@ -10,8 +10,7 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
     libcutils \
     liblog \
-    libloc_stub \
-    libandroid_runtime
+    libloc_stub
 
 LOCAL_SRC_FILES += \
         platform_lib_android_runtime.cpp \
